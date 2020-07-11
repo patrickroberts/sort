@@ -4,7 +4,7 @@
   import some from '../../actions/some';
   import only from '../../actions/only';
 
-  const value = search('s', 0, { parse: Number, stringify: String });
+  const value = search('s', 1, { parse: Number, stringify: String });
   const { subscribe } = value;
 
   export const show = { subscribe };
