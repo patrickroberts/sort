@@ -2,32 +2,26 @@ import progress from './progress';
 
 export default class Context {
   dirty = false;
-  #get;
-  #compare;
 
   constructor(array, get, compare, method, criteria) {
     this.array = array;
-    this.#get = get;
-    this.#compare = compare;
+    this.get = indexOrValue => {
+      this.dirty = true;
+      return get(this.value(indexOrValue));
+    };
+    this.compare = (a, b) => {
+      this.dirty = true;
+      return compare(this.value(a), this.value(b));
+    };
     this.done = progress(method(this));
     this.criteria = criteria;
   }
 
-  #toValue = (indexOrValue) => {
+  value(indexOrValue) {
     return typeof indexOrValue === 'number'
     ? this.array[indexOrValue]
     : indexOrValue;
-  };
-
-  get = value => {
-    this.dirty = true;
-    return this.#get(this.#toValue(value));
-  };
-
-  compare = (a, b) => {
-    this.dirty = true;
-    return this.#compare(this.#toValue(a), this.#toValue(b));
-  };
+  }
 
   put = (i, value) => {
     this.dirty = true;
