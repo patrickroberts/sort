@@ -73,13 +73,13 @@ export default class Node {
         color = `#0000${hex(this.blue)}`;
         break;
       case 'hue':
-        color = `hsl(${this.hue}, 50%, 50%)`;
+        color = `hsl(${this.hue}, var(--no-saturation), var(--no-lightness))`;
         break;
       case 'saturation':
-        color = `hsl(180, ${this.saturation}%, 50%);`;
+        color = `hsl(var(--no-hue), ${this.saturation}%, var(--no-lightness));`;
         break;
       case 'lightness':
-        color = `hsl(180, 50%, ${this.lightness}%);`;
+        color = `hsl(var(--no-hue), var(--no-saturation), ${this.lightness}%);`;
         break;
       case 'luminance':
         color = `#${hex(this.luminance).repeat(3)}`;

@@ -19,6 +19,8 @@
       <option value="rmerge">Merge (Recursive)</option>
       <option value="quick">Quick</option>
       <option value="selection">Selection</option>
+      <option value="shell">Shell</option>
+      <option value="smooth">Smooth</option>
     </optgroup>
   </select>
 </label>

@@ -1,6 +1,9 @@
 <style>
 :global(:root) {
-  --no-color: hsl(180, 100%, 45%);
+  --no-hue: 180;
+  --no-saturation: 100%;
+  --no-lightness: 45%;
+  --no-color: hsl(var(--no-hue), var(--no-saturation), var(--no-lightness));
 }
 
 :global(html, body) {
@@ -66,7 +69,8 @@
 
 @media (prefers-color-scheme: dark) {
   :global(:root) {
-    --no-color: hsl(180, 100%, 30%);
+    --no-saturation: 75%;
+    --no-lightness: 30%;
   }
 
   :global(body) {
