@@ -15,4 +15,8 @@
     text-align: center;
     clear: both;
   }
+
+  button {
+    cursor: pointer;
+  }
 </style>

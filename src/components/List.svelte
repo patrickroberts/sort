@@ -17,6 +17,7 @@
     transform-origin: center;
     transform-style: preserve-3d;
   }
+
   div {
     position: relative;
     flex-grow: 1;
