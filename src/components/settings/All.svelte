@@ -1,7 +1,9 @@
 <script context="module">
   import search from '../../search';
+  import cycle from '../../actions/cycle';
 
-  const value = search('s', true, { parse: s => Boolean(+s), stringify: b => String(+b) });
+  const table = [false, true, null];
+  const value = search('s', true, { parse: s => table[+s], stringify: b => table.indexOf(b) });
   const { subscribe } = value;
 
   export const all = { subscribe };
@@ -9,7 +11,7 @@
 
 <label>
   <span>Show All</span>
-  <input bind:checked={$value} type="checkbox" />
+  <input use:cycle={value} type="checkbox" />
 </label>
 
 <style>

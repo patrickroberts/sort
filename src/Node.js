@@ -42,45 +42,75 @@ export default class Node {
     let height = 100;
     let color = 'var(--no-color)';
 
+    const allDimensions = () => {
+      top = this.bottom;
+      height = this.height;
+    };
+
+    const allColor = () => {
+      color = this.color;
+    };
+
     switch (key) {
       case 'all':
-        top = this.bottom;
-        height = this.height;
-        color = this.color;
+        allDimensions();
+        allColor();
         break;
+      case 'top-all':
+        allColor();
       case 'top':
         height = this.top;
         break;
+      case 'bottom-all':
+        allColor();
       case 'bottom':
         top = this.bottom;
         height = 100 - this.bottom;
         break;
+      case 'height-all':
+        allColor();
       case 'height':
         top = 50 - this.height / 2;
         height = this.height;
         break;
+      case 'center-all':
+        allColor();
       case 'center':
         top = this.center - 0.5;
         height = 1;
         break;
+      case 'red-all':
+        allDimensions();
       case 'red':
         color = `#${hex(this.red)}0000`;
         break;
+      case 'green-all':
+        allDimensions();
       case 'green':
         color = `#00${hex(this.green)}00`;
         break;
+      case 'blue-all':
+        allDimensions();
       case 'blue':
         color = `#0000${hex(this.blue)}`;
         break;
+      case 'hue-all':
+        allDimensions();
       case 'hue':
         color = `hsl(${this.hue}, var(--no-saturation), var(--no-lightness))`;
         break;
+      case 'saturation-all':
+        allDimensions();
       case 'saturation':
         color = `hsl(var(--no-hue), ${this.saturation}%, var(--no-lightness));`;
         break;
+      case 'lightness-all':
+        allDimensions();
       case 'lightness':
         color = `hsl(var(--no-hue), var(--no-saturation), ${this.lightness}%);`;
         break;
+      case 'luminance-all':
+        allDimensions();
       case 'luminance':
         color = `#${hex(this.luminance).repeat(3)}`;
         break;
