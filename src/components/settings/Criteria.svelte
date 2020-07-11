@@ -10,7 +10,7 @@
 <label>
   <span>By</span>
   <select bind:value={$value}>
-    <optgroup label="Dimensions">
+    <optgroup label="Size">
       <option value="top">Top</option>
       <option value="bottom">Bottom</option>
       <option value="height">Height</option>

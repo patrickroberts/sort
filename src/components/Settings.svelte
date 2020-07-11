@@ -3,22 +3,19 @@
   import Length from './settings/Length.svelte';
   import Order from './settings/Order.svelte';
   import Criteria from './settings/Criteria.svelte';
-  import All from './settings/All.svelte';
+  import Show from './settings/Show.svelte';
+  import Menu from './Menu.svelte';
+
+  export let iterator;
 </script>
 
 <div class="fixed">
-  <div class="row">
-    <Method />
-  </div>
-  <div class="row">
-    <Length />
-  </div>
-  <div class="row">
-    <Order />
-  </div>
-  <div class="row">
-    <Criteria /> <All />
-  </div>
+  <Method />
+  <Length />
+  <Order />
+  <Criteria />
+  <Show key={iterator.key} />
+  <Menu {iterator} />
 </div>
 
 <style>
@@ -26,17 +23,17 @@
     top: 1rem;
     right: 1rem;
   }
-  .row {
+  .fixed > :global(label) {
+    display: block;
+    float: left;
+    clear: both;
     margin-bottom: 0.5rem;
   }
-  .row:last-child {
+  .fixed :global(input),
+  .fixed :global(select) {
     margin-bottom: 0;
   }
-  .row :global(input),
-  .row :global(select) {
-    margin-bottom: 0;
-  }
-  .row > :global(label:first-child > span) {
+  .fixed > :global(label > span) {
     display: inline-block;
     width: 60px;
     text-align: right;

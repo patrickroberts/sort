@@ -4,15 +4,15 @@
   export let iterator;
 </script>
 
-<div class="fixed">
-  <button on:click={iterator.next}>Step</button>
+<div>
   <button use:play={iterator}>Play</button>
+  <button on:click={iterator.next}>Step</button>
   <button on:click={iterator.reset}>Reset</button>
 </div>
 
 <style>
   div {
-    top: 1rem;
-    left: 1rem;
+    text-align: center;
+    clear: both;
   }
 </style>
