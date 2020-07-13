@@ -1,7 +1,6 @@
 <script>
-  import Global from './Global.svelte';
+  import '../global.css';
   import Sort from './Sort.svelte';
 </script>
 
-<Global />
 <Sort />

@@ -1,4 +1,5 @@
 import svelte from 'rollup-plugin-svelte';
+import postcss from 'rollup-plugin-postcss';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
@@ -12,7 +13,7 @@ export default {
     sourcemap: true,
     format: 'iife',
     name: 'app',
-    file: 'public/build/bundle.js'
+    file: 'public/build/bundle.min.js'
   },
   plugins: [
     svelte({
@@ -20,9 +21,15 @@ export default {
       dev: !production,
       // we'll extract any component CSS out into
       // a separate file - better for performance
-      css: css => {
-        css.write('public/build/bundle.css');
-      }
+      emitCss: true
+    }),
+
+    postcss({
+      extensions: ['.css'],
+      extract: true,
+      minimize: true,
+      sourceMap: true,
+      use: []
     }),
 
     // If you have external dependencies installed from
@@ -34,6 +41,7 @@ export default {
       browser: true,
       dedupe: ['svelte']
     }),
+
     commonjs(),
 
     // In dev mode, call `npm run start` once
